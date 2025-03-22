@@ -82,10 +82,5 @@ npx http-server . -p 8080
 
 The site will be available at http://localhost:8080.
 
-📌 Additional Resources
-
-🔗 GitHub Pages Documentation
-
-🌐 How to Set Up a Custom Domain
 
 
