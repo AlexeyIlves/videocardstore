@@ -32,16 +32,9 @@ This project is an online store for selling graphics cards. The website is devel
    git clone https://github.com/username/repository.git
    cd repository
 
+🚀 **Deployment on GitHub Pages
 
-HTML, CSS, JavaScript
-
-GitHub Pages for deployment
-
-GitHub Actions (optional) for automatic deployment
-
-🚀 Deployment on GitHub Pages
-
-1. Fork or Clone the Repository
+1. **Fork or Clone the Repository
 
 git clone https://github.com/username/repository.git
 cd repository
