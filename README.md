@@ -1,11 +1,12 @@
-Online Store for Graphics Cards
+# Online Store for Graphics Cards
 
-📌 Project Description
+📌 **Project Description**
 
 This project is an online store for selling graphics cards. The website is developed using JavaScript and is designed to showcase a catalog of graphics cards, their specifications, and prices. The project consists of static web pages and does not require a backend.
 
-📂 Project Structure
+📂 **Project Structure**
 
+```plaintext
 /
 ├── index.html        # Main page
 ├── styles/
@@ -16,7 +17,21 @@ This project is an online store for selling graphics cards. The website is devel
 │   ├── images/       # Graphics card images
 ├── README.md         # Project documentation
 
-🛠 Technologies Used
+
+🛠 **Technologies Used**
+
+- HTML, CSS, JavaScript
+- GitHub Pages for deployment
+- GitHub Actions (optional) for automatic deployment
+
+🚀 **Deployment on GitHub Pages**
+
+1. **Fork or Clone the Repository**
+
+   ```bash
+   git clone https://github.com/username/repository.git
+   cd repository
+
 
 HTML, CSS, JavaScript
 
@@ -46,7 +61,7 @@ In the "Source" section, select the main branch and the /root folder (or docs if
 Click Save. After this, the site will be available at:
 https://username.github.io/repository/
 
-4. Automatic Deployment (Optional)
+4. Automatic Deployment 
 
 To automate deployment on each commit, use GitHub Actions by adding the .github/workflows/deploy.yml file:
 
@@ -80,5 +95,4 @@ The site will be available at http://localhost:8080.
 
 🌐 How to Set Up a Custom Domain
 
-© 2025 Online Store for Graphics Cards. All rights reserved.
 
