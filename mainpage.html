@@ -7,34 +7,132 @@
     <title>Ilves Videocard Store</title>
     <a href="https://www.msn.com">Microsoft</a> 
     <style>
-
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-        }
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
 
-        header {
-            background-color: #1a1a11;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+    header {
+      background-color: #1a1a1a;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
 
-        footer {
-            background-color: #1a1a11;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: block;
+    }
+
+    nav a:hover {
+      background-color: #555;
+    }
+
+    .hero {
+      background-image: url('https://example.com/gpu-banner.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background-color: white;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .product-card img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .product-card h3 {
+      font-size: 1.2em;
+    }
+
+    .product-card .price {
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #1a1a1a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+      
     </style>
 </head>
 <body>
-    <p>VideoCards Shop</p>
-    <p id="test">Testing Javascript with ID Attribute</p>
-    <p class="testClass">Testing Javascript with class</p>
+
+    <header>
+        <h1>Videocards Store</h1>
+        <p>Anytime, anything.</p>
+    </header>
+
+    <nav>
+        <a href="#">Main Page</a>
+        <a href="#">Catalog</a>
+        <a href="#">About Us</a>
+        <a href="#">Contacts</a>
+    </nav>
+
+    <div class="container">
+    <div class="product">
+      <img src="https://via.placeholder.com/150" alt="Videocard 1" />
+      <div class="product-info">
+        <h2>GeForce RTX 4090</h2>
+        <p>24GB GDDR6X, PCIe 4.0, 16384 CUDA-ядер</p>
+        <div class="price">₽ 180 000</div>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/150" alt="Videocard 2" />
+      <div class="product-info">
+        <h2>Radeon RX 7900 XTX</h2>
+        <p>24GB GDDR6, PCIe 4.0, 6144 потоковых процессоров</p>
+        <div class="price">₽ 120 000</div>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/150" alt="Videocard 3" />
+      <div class="product-info">
+        <h2>GeForce RTX 4070 Ti</h2>
+        <p>12GB GDDR6X, PCIe 4.0, 7680 CUDA-ядер</p>
+        <div class="price">₽ 85 000</div>
+      </div>
+    </div>
+    </div>
 
     <footer>
         <p>&copy; 2025 Ilves Videocard Store. All rights preserved.</p>
