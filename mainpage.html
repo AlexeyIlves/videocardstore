@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
@@ -241,7 +241,15 @@
 
     const productsGrid = document.getElementById('productsGrid');
     const cartCountEl = document.getElementById('cartCount');
-    let CART_COUNT = 0;
+    function updateCartCount(){
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      const totalCount = cart.reduce((sum, item) => {
+        return sum + item.quantity;
+      }, 0);
+
+      cartCountEl.textContent = totalCount;
+    }
 
     function formatPrice(n){
       return new Intl.NumberFormat('ru-RU').format(n) + ' ₽';
@@ -276,15 +284,34 @@
     }
 
     function addToCart(id){
-      CART_COUNT++;
-      cartCountEl.textContent = CART_COUNT;
-      // Программисту нужно будет отправлять на сервер — как пример (не мой код, но хочу взять на вооружение на будущее)
-      const p = PRODUCTS.find(x=>x.id===id);
-      alert(`Добавлено: ${p.title}`);
-    }
+  const product = PRODUCTS.find(x => x.id === id);
+
+  // Получаем корзину
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Проверяем: есть ли уже товар
+  const existing = cart.find(item => item.id === id);
+
+  if(existing){
+    existing.quantity += 1;
+  } else {
+    cart.push({
+      ...product,
+      quantity: 1
+    });
+  }
+
+  // Сохраняем
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  // Обновляем UI
+  updateCartCount();
+
+  console.log(`Добавлено: ${product.title}`);
+}
 
     function addToCartSample(){ addToCart(1); }
-    function viewDetails(id){ alert('Открыть карточку товара: ' + id); }
+    function viewDetails(id){ window.location.href = `product.html?id=${id}`; }
 
     function applySearch(){
       const q = document.getElementById('q').value.trim().toLowerCase();
@@ -302,10 +329,15 @@
 
     // Инициализация
     renderProducts(PRODUCTS);
+    updateCartCount();
+
+    window.addEventListener('storage', () => {
+      updateCartCount();
+    });
 
     // Пример локального сохранения корзины (упрощённо)
     document.getElementById('cartBtn').addEventListener('click', ()=>{
-      alert('Открыть корзину — заглушка. В корзине товаров: ' + CART_COUNT);
+      window.location.href = 'cart.html';
     });
   </script>
 </body>

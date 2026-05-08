@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>GPU Store — Товар</title>
+
+  <style>
+
+    :root{
+      --accent:#1273ea;
+      --muted:#6b7280;
+      --bg:#f4f6fb;
+      --card:#ffffff;
+      --shadow:0 6px 18px rgba(16,24,40,0.08);
+      --radius:14px;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Arial;
+      background:var(--bg);
+      color:#111827;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:24px;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:30px;
+    }
+
+    .logo{
+      font-size:22px;
+      font-weight:800;
+      color:var(--accent);
+      text-decoration:none;
+    }
+
+    .back-btn{
+      text-decoration:none;
+      background:#e5e7eb;
+      padding:10px 14px;
+      border-radius:10px;
+      color:#111827;
+      font-weight:600;
+    }
+
+    .product{
+      display:grid;
+      grid-template-columns:500px 1fr;
+      gap:32px;
+      background:var(--card);
+      border-radius:20px;
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .image{
+      background:linear-gradient(135deg,#eef2ff,#fff);
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:420px;
+    }
+
+    .info{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .title{
+      font-size:32px;
+      font-weight:800;
+      margin-bottom:14px;
+    }
+
+    .specs{
+      color:var(--muted);
+      line-height:1.7;
+      margin-bottom:24px;
+    }
+
+    .price{
+      font-size:36px;
+      font-weight:800;
+      margin-bottom:20px;
+    }
+
+    .stock{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:20px;
+      width:max-content;
+    }
+
+    .in-stock{
+      background:#ecfdf5;
+      color:#065f46;
+    }
+
+    .out-stock{
+      background:#fff1f2;
+      color:#9f1239;
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      margin-top:10px;
+    }
+
+    .btn{
+      border:none;
+      border-radius:12px;
+      padding:14px 20px;
+      font-size:16px;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .primary{
+      background:var(--accent);
+      color:white;
+    }
+
+    .secondary{
+      background:#e5e7eb;
+    }
+
+    .cart-counter{
+      background:#ff3b30;
+      color:#fff;
+      border-radius:999px;
+      padding:3px 8px;
+      font-size:12px;
+      margin-left:8px;
+    }
+
+    .top-actions{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    @media (max-width: 900px){
+
+      .product{
+        grid-template-columns:1fr;
+      }
+
+      .image{
+        min-height:280px;
+      }
+
+      .title{
+        font-size:26px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+
+      <a href="index.html" class="logo">
+        GPU Store
+      </a>
+
+      <div class="top-actions">
+
+        <a href="index.html" class="back-btn">
+          ← Назад
+        </a>
+
+        <button class="btn secondary" onclick="goToCart()">
+          Корзина
+          <span id="cartCount" class="cart-counter">
+            0
+          </span>
+        </button>
+
+      </div>
+
+    </header>
+
+    <div id="productContainer"></div>
+
+  </div>
+
+  <script>
+
+    const PRODUCTS = [
+      {id:1,title:"NVIDIA GeForce RTX 4090",specs:"24GB GDDR6X · PCIe 4.0",price:199990,inStock:true},
+      {id:2,title:"NVIDIA GeForce RTX 4080",specs:"16GB GDDR6X · PCIe 4.0",price:129990,inStock:true},
+      {id:3,title:"AMD Radeon RX 7900 XTX",specs:"24GB GDDR6 · PCIe 4.0",price:139990,inStock:false},
+      {id:4,title:"AMD Radeon RX 7800 XT",specs:"16GB GDDR6 · PCIe 4.0",price:75990,inStock:true},
+      {id:5,title:"NVIDIA GeForce RTX 4070 Ti",specs:"12GB GDDR6X · PCIe 4.0",price:84990,inStock:true},
+      {id:6,title:"NVIDIA GeForce RTX 4060",specs:"8GB GDDR6 · PCIe 4.0",price:39990,inStock:true},
+      {id:7,title:"AMD Radeon RX 7600",specs:"8GB GDDR6 · PCIe 4.0",price:27990,inStock:true},
+      {id:8,title:"NVIDIA GeForce GTX 1660 Super",specs:"6GB GDDR6 · PCIe 3.0",price:19990,inStock:true}
+    ];
+
+    const params = new URLSearchParams(window.location.search);
+
+    const id = Number(params.get('id'));
+
+    const product = PRODUCTS.find(p => p.id === id);
+
+    const container = document.getElementById('productContainer');
+
+    function formatPrice(n){
+      return new Intl.NumberFormat('ru-RU').format(n) + ' ₽';
+    }
+
+    function updateCartCount(){
+
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      const total = cart.reduce((sum, item)=>{
+        return sum + item.quantity;
+      },0);
+
+      document.getElementById('cartCount').textContent = total;
+    }
+
+    function addToCart(){
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      const existing = cart.find(item => item.id === product.id);
+
+      if(existing){
+        existing.quantity += 1;
+      } else {
+        cart.push({
+          ...product,
+          quantity:1
+        });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      updateCartCount();
+
+      alert('Товар добавлен в корзину');
+    }
+
+    function goToCart(){
+      window.location.href = 'cart.html';
+    }
+
+    if(!product){
+
+      container.innerHTML = `
+        <div style="
+          background:white;
+          padding:40px;
+          border-radius:20px;
+          text-align:center;
+          box-shadow:var(--shadow);
+        ">
+          <h1>Товар не найден</h1>
+          <p>Возможно, ссылка устарела.</p>
+        </div>
+      `;
+
+    } else {
+
+      container.innerHTML = `
+        <div class="product">
+
+          <div class="image">
+
+            <svg width="300" height="160" viewBox="0 0 300 160">
+
+              <rect
+                width="300"
+                height="160"
+                rx="12"
+                fill="#dbeafe"
+              />
+
+              <text
+                x="150"
+                y="85"
+                text-anchor="middle"
+                font-size="18"
+                fill="#6b7280"
+                font-family="Arial"
+              >
+                GPU IMAGE
+              </text>
+
+            </svg>
+
+          </div>
+
+          <div class="info">
+
+            <div class="title">
+              ${product.title}
+            </div>
+
+            <div class="specs">
+              ${product.specs}
+              <br><br>
+              Высокопроизводительная видеокарта для игр,
+              рендера и профессиональных задач.
+            </div>
+
+            <div class="price">
+              ${formatPrice(product.price)}
+            </div>
+
+            <div class="stock ${product.inStock ? 'in-stock' : 'out-stock'}">
+              ${product.inStock ? 'В наличии' : 'Нет в наличии'}
+            </div>
+
+            <div class="actions">
+
+              ${
+                product.inStock
+                ?
+                `<button class="btn primary" onclick="addToCart()">
+                  Добавить в корзину
+                </button>`
+                :
+                `<button class="btn secondary">
+                  Сообщить о поступлении
+                </button>`
+              }
+
+            </div>
+
+          </div>
+
+        </div>
+      `;
+    }
+
+    updateCartCount();
+
+  </script>
+
+</body>
+</html>

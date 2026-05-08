@@ -1,86 +1,133 @@
-# Online Store for Graphics Cards
+# GPU Store
 
-📌 **Project Description**
+Modern frontend pet project of an online GPU store built with vanilla JavaScript, HTML and CSS.
 
-This project is an online store for selling graphics cards. The website is developed using JavaScript and is designed to showcase a catalog of graphics cards, their specifications, and prices. The project consists of static web pages and does not require a backend.
+## Preview
 
-📂 **Project Structure**
+GPU Store is a responsive e-commerce web application prototype focused on selling graphics cards.
+
+The project includes:
+
+* Product catalog
+* Shopping cart
+* Search functionality
+* LocalStorage persistence
+* Responsive layout
+* Dynamic product rendering
+
+---
+
+## Features
+
+### Product Catalog
+
+* Dynamic product rendering from centralized `products.js`
+* Product cards with pricing and stock status
+* Responsive grid layout
+
+### Shopping Cart
+
+* Add/remove products
+* Quantity controls
+* Real-time total price calculation
+* Persistent cart using LocalStorage
+
+### Search
+
+* Search by:
+
+  * GPU model
+  * Brand
+  * Specifications
+
+### Responsive UI
+
+* Desktop support
+* Tablet support
+* Mobile-friendly layout
+
+---
+
+## Technologies Used
+
+* HTML5
+* CSS3
+* Vanilla JavaScript
+* LocalStorage API
+
+---
+
+## Project Structure
 
 ```plaintext
-/
-├── index.html        # Main page
-├── styles/
-│   ├── main.css      # Main site styles
-├── scripts/
-│   ├── app.js        # Site logic
-├── assets/
-│   ├── images/       # Graphics card images
-├── README.md         # Project documentation
+project/
+│
+├── index.html
+├── cart.html
+├── styles.css
+│
+├── js/
+│   ├── products.js
+│   ├── main.js
+│   └── cart.js
+│
+└── images/
+```
 
+---
 
-🛠 **Technologies Used**
+## Current Functionality
 
-- HTML, CSS, JavaScript
-- GitHub Pages for deployment
-- GitHub Actions (optional) for automatic deployment
+* Dynamic rendering of products
+* Cart state synchronization
+* Quantity management
+* Total price calculation
+* Search filtering
+* Responsive design
 
-🚀 **Deployment on GitHub Pages**
+---
 
-1. **Fork or Clone the Repository**
+## Planned Improvements
 
-   ```bash
-   git clone https://github.com/username/repository.git
-   cd repository
+* Product details page
+* Favorites system
+* Backend integration (Node.js + Express)
+* Database support
+* User authentication
+* Payment integration
+* Admin panel
+* REST API
 
-🚀 **Deployment on GitHub Pages
+---
 
-1. **Fork or Clone the Repository
+## How to Run
 
-git clone https://github.com/username/repository.git
-cd repository
+1. Clone the repository
 
-2. Ensure Files Are in the main Branch
+```bash
+git clone <repository-url>
+```
 
-If needed, create and switch to the main branch:
+2. Open the project folder
 
-git checkout -b main
+3. Run with Live Server
+   or simply open `index.html` in the browser
 
-3. Enable GitHub Pages
+---
 
-Go to Settings → Pages in the repository settings.
+## Goals of This Project
 
-In the "Source" section, select the main branch and the /root folder (or docs if the site is there).
+This project was created to practice:
 
-Click Save. After this, the site will be available at:
-https://username.github.io/repository/
+* Frontend architecture
+* DOM manipulation
+* State management
+* LocalStorage handling
+* Responsive web design
+* JavaScript fundamentals
 
-4. Automatic Deployment 
+---
 
-To automate deployment on each commit, use GitHub Actions by adding the .github/workflows/deploy.yml file:
+## Author
 
-name: Deploy to GitHub Pages
-on:
-  push:
-    branches:
-      - main
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: .
-
-📜 Local Development
-
-To test before deployment, start a local server:
-
-npx http-server . -p 8080
-
-The site will be available at http://localhost:8080.
-
-
-
+Created as a frontend pet project for portfolio and learning purposes.
