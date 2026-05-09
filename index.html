@@ -1,30 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GPU Store — Главная</title>
+  <meta name="description" content="Интернет-магазин видеокарт — акции, топовые модели, быстрая доставка." />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <p>Testing Javascript</p>
-    <p id="test">Testing Javascript with ID Attribute</p>
-    <p class="testClass">Testing Javascript with class</p>
-    <p class="testClass">Testing Javascript with class</p>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">GPU</div>
+        <div>
+          <div style="font-weight:800">GPU Store</div>
+          <div class="muted" style="font-size:12px">Высокая производительность — честные цены</div>
+        </div>
+      </div>
 
-    <table>
-        <tr>
-            <th>Location</th>
-            <th>Opening Hours</th>
-            <th>Email Address</th>
-            <tr>Phone Number</tr>
-        </tr>
-        <tr>
-            <td>
-                <img src="" alt="logo 1"/>
-            </td>
-            <td>Saint-Petersburg</td>
-        </tr>
-    </table>
+      <nav class="nav-collapse">
+        <a href="#catalog">Каталог</a>
+        <a href="#deals">Акции</a>
+        <a href="#about">О нас</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <div style="display:flex;align-items:center;gap:10px;flex:1;margin-left:20px">
+        <div class="search" role="search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden style="opacity:.7;margin-right:8px"><path d="M21 21l-4.35-4.35" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="11" cy="11" r="6" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle></svg>
+          <input id="q" placeholder="Поиск по моделям, брендам, характеристикам..." />
+          <button class="icon-btn" title="Поиск" onclick="applySearch()">🔎</button>
+        </div>
+
+        <div class="actions">
+          <button class="icon-btn" title="Избранное">♡</button>
+          <button class="icon-btn" title="Профиль">👤</button>
+          <button class="btn" id="cartBtn">Корзина <span id="cartCount" class="cart-badge">0</span></button>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Главная акция">
+      <div>
+        <div class="kicker">Спецпредложение</div>
+        <h1>Освежи сборку — скидки до 15% на избранные модели</h1>
+        <p>У нас только проверенные поставщики и официальная гарантия. Подбери видеокарту по бюджету и задачам — игры, рендер или майнинг.</p>
+        <div class="cta">
+          <a class="btn" href="#catalog">Перейти в каталог</a>
+          <a href="#deals" class="icon-btn">Подробнее →</a>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:12px">
+          <div class="promo-card">
+            <div class="promo-tag">Быстрая доставка</div>
+            <div style="font-weight:700">Доставка по всей стране за 1–3 дня</div>
+            <div class="muted" style="font-size:13px">Отслеживание и возможность самовывоза</div>
+          </div>
+
+          <div class="promo-card">
+            <div class="promo-tag">Гарантия 24м</div>
+            <div style="font-weight:700">Официальная гарантия на большинство моделей</div>
+            <div class="muted" style="font-size:13px">Возврат и гарантийный ремонт</div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="background:linear-gradient(135deg,#fff,#f2f9ff);padding:12px;border-radius:12px;box-shadow:var(--shadow)">
+            <div style="font-weight:700">Топ-продажа</div>
+            <div class="muted" style="font-size:13px">RTX 4090 — ограниченное количество</div>
+            <div style="margin-top:10px;font-weight:800;font-size:18px">₽ 199 990</div>
+            <button class="btn" style="margin-top:10px" onclick="addToCartSample()">Добавить в корзину</button>
+          </div>
+
+          <div style="padding:12px;border-radius:12px;background:#fff;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px">
+            <div style="font-weight:700">Подбор по задачам</div>
+            <div class="muted" style="font-size:13px">Игры · Проф. рендер · Майнинг</div>
+            <div style="display:flex;gap:8px;margin-top:6px">
+              <button class="icon-btn">Игры</button>
+              <button class="icon-btn">Рендер</button>
+              <button class="icon-btn">Бюджет</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- CATALOG PREVIEW -->
+    <section id="catalog" class="section">
+      <h2>Популярные видеокарты</h2>
+      <div class="grid" id="productsGrid" aria-live="polite">
+        <!-- Карточки подгружаются скриптом -->
+      </div>
+      <div style="margin-top:12px;text-align:center">
+        <a class="btn" href="#" onclick="alert('Перейти в полный каталог (заглушка)')">Показать все</a>
+      </div>
+    </section>
+
+    <!-- DEALS -->
+    <section id="deals" class="section">
+      <h2>Горящие скидки</h2>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <div class="card" style="flex:1;min-width:240px">
+          <div style="font-weight:800">Скидка на RX 7900</div>
+          <div class="muted" style="font-size:13px">Экономия 10% — ограниченное предложение</div>
+          <div style="margin-top:12px"><button class="btn" onclick="alert('Добавлено — заглушка')">В корзину</button></div>
+        </div>
+
+        <div class="card" style="flex:1;min-width:240px">
+          <div style="font-weight:800">Trade-in: сдай старую карту</div>
+          <div class="muted" style="font-size:13px">Получите скидку до 20% при сдаче старой видеокарты</div>
+          <div style="margin-top:12px"><button class="btn" onclick="alert('Страница trade-in — заглушка')">Подробнее</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT & CONTACT -->
+    <section id="about" class="section">
+      <div style="display:flex;gap:18px;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px">
+          <h3>О магазине</h3>
+          <p class="muted">Мы — независимый магазин комплектующих с фокусом на видеокарты. Поставки от проверенных дилеров, своя служба поддержки и гарантийный сервис.</p>
+        </div>
+        <div id="contacts" style="min-width:260px">
+          <h3>Контакты</h3>
+          <p class="muted">Email: support@gpustore.example<br/>Телефон: +7 (900) 000-00-00</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <div style="font-weight:800">GPU Store</div>
+          <div class="muted" style="font-size:13px">© 2025 Все права защищены</div>
+        </div>
+        <div>
+          <div style="font-weight:700">Покупателю</div>
+          <div class="muted" style="font-size:13px">Доставка<br/>Гарантии<br/>Возврат</div>
+        </div>
+        <div>
+          <div style="font-weight:700">Компания</div>
+          <div class="muted" style="font-size:13px">О нас<br/>Контакты<br/>Карьера</div>
+        </div>
+        <div>
+          <div style="font-weight:700">Подписка</div>
+          <div class="muted" style="font-size:13px">Подпишитесь на новости и акции</div>
+          <div style="margin-top:8px;display:flex;gap:8px">
+            <input id="footEmail" placeholder="Email" style="padding:8px;border-radius:8px;border:1px solid #e8eefb;outline:none" />
+            <button class="btn" onclick="subscribe()">Подписаться</button>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

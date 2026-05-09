@@ -407,6 +407,103 @@ nav a:hover{
   gap:18px;
 }
 
+.muted{
+  color:var(--muted);
+}
+
+.cart-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-width:22px;
+  height:22px;
+
+  padding:0 6px;
+
+  border-radius:999px;
+
+  background:white;
+  color:var(--accent);
+
+  font-size:12px;
+  font-weight:800;
+
+  margin-left:6px;
+}
+
+.actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.filters{
+  background:var(--surface);
+
+  padding:20px;
+
+  border-radius:18px;
+
+  box-shadow:var(--shadow);
+
+  margin-bottom:24px;
+}
+
+.promo-card{
+  background:white;
+
+  padding:14px;
+
+  border-radius:14px;
+
+  box-shadow:var(--shadow);
+
+  min-width:220px;
+}
+
+.promo-tag{
+  display:inline-block;
+
+  margin-bottom:8px;
+
+  padding:6px 10px;
+
+  border-radius:999px;
+
+  background:#dbeafe;
+  color:#1d4ed8;
+
+  font-size:12px;
+  font-weight:700;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.back-btn{
+  padding:10px 14px;
+  border-radius:10px;
+  background:#e5e7eb;
+}
+
+.back-btn:hover{
+  background:#d1d5db;
+}
+
+.cart-counter{
+  margin-left:6px;
+}
+
 .cart-item{
   display:flex;
   align-items:center;
