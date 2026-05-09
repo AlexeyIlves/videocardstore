@@ -5,76 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>GPU Store — Главная</title>
   <meta name="description" content="Интернет-магазин видеокарт — акции, топовые модели, быстрая доставка." />
-  <style>
-    /* ---- БАЗОВАЯ СТИЛИСТИКА ---- */
-    :root{
-      --accent:#1273ea;
-      --accent-2:#0b61d6;
-      --muted:#6b7280;
-      --card-bg:#ffffff;
-      --surface:#f7f7fb;
-      --glass: rgba(255,255,255,0.7);
-      --radius:12px;
-      --shadow: 0 6px 18px rgba(16,24,40,0.08);
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      color-scheme: light;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,#f4f6fb 0%, #ffffff 100%);color:#0f172a;line-height:1.4}
-    a{color:inherit;text-decoration:none}
-
-    /* ---- Сетка и контейнер ---- */
-    .container{width:100%;max-width:1200px;margin:0 auto;padding:24px}
-
-    header{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),var(--accent-2));border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
-    nav{display:flex;gap:18px;align-items:center}
-    nav a{color:var(--muted);font-weight:600}
-
-    /* ---- Поиск и действия ---- */
-    .search{flex:1;margin:0 20px;display:flex;align-items:center;background:var(--card-bg);padding:8px;border-radius:10px;box-shadow:var(--shadow)}
-    .search input{flex:1;border:0;outline:none;padding:8px;font-size:15px}
-    .actions{display:flex;gap:12px;align-items:center}
-    .btn{background:var(--accent);color:#fff;padding:8px 12px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
-    .icon-btn{background:transparent;border:0;padding:8px;border-radius:10px;cursor:pointer}
-    .cart-badge{background:#ff3b30;color:#fff;font-weight:700;border-radius:999px;padding:3px 7px;font-size:12px;margin-left:6px}
-
-    /* ---- Hero ---- */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin:18px 0;padding:28px;border-radius:16px;background:linear-gradient(90deg, rgba(18,115,234,0.08), rgba(11,97,214,0.04));box-shadow:var(--shadow)}
-    .hero h1{font-size:28px;margin:0 0 10px}
-    .hero p{color:var(--muted);margin:0 0 16px}
-    .hero .cta{display:flex;gap:12px}
-
-    .promo-card{background:linear-gradient(135deg,#fff,#f4f8ff);padding:16px;border-radius:12px}
-    .promo-tag{display:inline-block;padding:6px 10px;background:rgba(18,115,234,0.12);color:var(--accent);border-radius:999px;font-weight:700;margin-bottom:10px}
-
-    /* ---- Секции товаров ---- */
-    .section{margin:28px 0}
-    .section h2{margin:0 0 14px}
-    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .card{background:var(--card-bg);padding:12px;border-radius:12px;box-shadow:var(--shadow);display:flex;flex-direction:column}
-    .thumb{height:160px;border-radius:10px;background:linear-gradient(135deg,#eef2ff,#fff);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
-    .title{font-weight:700;margin-bottom:6px}
-    .specs{color:var(--muted);font-size:13px;margin-bottom:10px}
-    .price-row{display:flex;align-items:center;justify-content:space-between}
-    .price{font-weight:800}
-    .tag--stock{font-size:12px;padding:6px 8px;border-radius:8px}
-    .in-stock{background:#ecfdf5;color:#065f46}
-    .out-stock{background:#fff1f2;color:#9f1239}
-
-    /* ---- Footer ---- */
-    footer{padding:28px 0;border-top:1px solid #eef2f6;margin-top:36px}
-    .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-
-    /* ---- Responsive ---- */
-    @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr 300px}}
-    @media (max-width:640px){.container{padding:16px}.hero{grid-template-columns:1fr}.search{margin:12px 0}.grid{grid-template-columns:1fr}.nav-collapse{display:none}}
-
-    /* small helpers */
-    .muted{color:var(--muted)}
-    .kicker{font-weight:700;color:var(--muted);font-size:13px}
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <div class="container">
