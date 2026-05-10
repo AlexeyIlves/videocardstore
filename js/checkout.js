@@ -12,6 +12,11 @@ const itemsTotal =
     'itemsTotal'
   );
 
+  const submitOrderBtn =
+    document.getElementById(
+        'submitOrderBtn'
+  );
+
 const finalTotal =
   document.getElementById(
     'finalTotal'
@@ -57,6 +62,9 @@ function renderOrder(){
 
   // Empty cart
   if(cart.length === 0){
+
+    submitOrderBtn.disabled = true;
+    submitOrderBtn.disabled = false;
 
     checkoutItems.innerHTML = `
       <div class="muted">
@@ -128,33 +136,61 @@ function renderOrder(){
 // CHECKOUT
 // =========================
 
-checkoutForm.addEventListener(
-  'submit',
-  e => {
+if(checkoutForm){
 
-    e.preventDefault();
+  checkoutForm.addEventListener(
+    'submit',
+    e => {
 
-    const cart = loadCart();
+      e.preventDefault();
 
-    if(cart.length === 0){
+      const cart = loadCart();
 
-      alert('Корзина пуста');
+      if(cart.length === 0){
 
-      return;
+        alert('Корзина пуста');
+
+        return;
+      }
+
+      localStorage.removeItem('cart');
+
+     document.body.innerHTML = `
+  <div class="container">
+
+    <div class="card"
+      style="
+        max-width:600px;
+        margin:80px auto;
+        text-align:center;
+      "
+    >
+
+      <h1>
+        Заказ оформлен 🎉
+      </h1>
+
+      <p class="muted">
+        Спасибо за покупку в GPU Store
+      </p>
+
+      <a
+        href="index.html"
+        class="btn btn-primary"
+        style="margin-top:20px"
+      >
+        Вернуться на главную
+      </a>
+
+    </div>
+
+  </div>
+`;
+
+      window.location.href = 'index.html';
     }
-
-    localStorage.removeItem(
-      'cart'
-    );
-
-    alert(
-      'Спасибо за заказ!'
-    );
-
-    window.location.href =
-      'index.html';
-  }
-);
+  );
+}
 
 // =========================
 // INIT
