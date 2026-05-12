@@ -64,8 +64,7 @@ function renderOrder(){
   if(cart.length === 0){
 
     submitOrderBtn.disabled = true;
-    submitOrderBtn.disabled = false;
-
+    
     checkoutItems.innerHTML = `
       <div class="muted">
         Корзина пуста
