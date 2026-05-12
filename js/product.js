@@ -26,6 +26,14 @@ const product =
   PRODUCTS.find(p => p.id === productId);
 
 // =========================
+// CURRENT IMAGE
+// =========================
+
+let currentImage =
+  product?.images?.[0]
+  || 'images/placeholder.png';
+
+// =========================
 // HELPERS
 // =========================
 
@@ -44,6 +52,17 @@ function updateCartCount(){
   },0);
 
   cartCount.textContent = total;
+}
+
+// =========================
+// GALLERY
+// =========================
+
+function changeImage(image){
+
+  currentImage = image;
+
+  renderProduct();
 }
 
 // =========================
@@ -138,14 +157,39 @@ function renderProduct(){
   container.innerHTML = `
     <div class="product">
 
-      <div class="product-image">
+      <div class="product-gallery">
 
-        <img
-          src="${product.image}"
-          alt="${product.title}"
-        >
+        <div class="product-image">
 
-      </div>
+            <img
+            src="${currentImage}"
+            alt="${product.title}"
+            >
+
+        </div>
+
+        <div class="gallery-thumbs">
+
+            ${product.images.map(image => `
+            <button
+                class="
+                gallery-thumb
+                ${currentImage === image ? 'active' : ''}
+                "
+                onclick="changeImage('${image}')"
+            >
+
+                <img
+                src="${image}"
+                alt="${product.title}"
+                >
+
+            </button>
+            `).join('')}
+
+        </div>
+
+    </div>
 
       <div class="product-info">
 

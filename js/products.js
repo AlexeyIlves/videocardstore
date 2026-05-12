@@ -12,7 +12,11 @@ const PRODUCTS = [
     memory:"24GB",
     boostClock:"2520 MHz",
     power:"450W",
-    image:"images/rtx4090.png"
+    images:[
+      "images/rtx4090-1.png",
+      "images/rtx4090-2.png",
+      "images/rtx4090-3.png"
+    ]
   },
 
   {
@@ -26,7 +30,11 @@ const PRODUCTS = [
     memory:"16GB",
     boostClock:"2505 MHz",
     power:"320W",
-    image:"images/rtx4080.png"
+    images:[
+      "images/rtx4090-1.png",
+      "images/rtx4080-2.png",
+      "images/rtx4080-3.png"
+    ]
   },
 
   {
@@ -40,6 +48,18 @@ const PRODUCTS = [
     memory:"24GB",
     boostClock:"2500 MHz",
     power:"355W",
-    image:"images/rx7900xtx.png"
+    images:[
+      "images/rtx7900xtx-1.png",
+      "images/rtx7900xtx-2.png",
+      "images/rtx7900xtx-3.png"
+    ]
   }
 ];
+
+PRODUCTS.forEach(product => {
+
+  product.image =
+    product.images?.[0]
+    || 'images/placeholder.png';
+
+});
