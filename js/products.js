@@ -14,8 +14,8 @@ const PRODUCTS = [
     power:"450W",
     images:[
       "images/rtx4090-1.png",
-      "images/rtx4090-2.png",
-      "images/rtx4090-3.png"
+      "images/rtx4090-2.jpeg",
+      "images/rtx4090-3.jpeg"
     ]
   },
 
@@ -31,7 +31,7 @@ const PRODUCTS = [
     boostClock:"2505 MHz",
     power:"320W",
     images:[
-      "images/rtx4090-1.png",
+      "images/rtx4090-1.jpeg",
       "images/rtx4080-2.png",
       "images/rtx4080-3.png"
     ]
@@ -51,7 +51,7 @@ const PRODUCTS = [
     images:[
       "images/rtx7900xtx-1.png",
       "images/rtx7900xtx-2.png",
-      "images/rtx7900xtx-3.png"
+      "images/rtx7900xtx-3.jpeg"
     ]
   }
 ];
