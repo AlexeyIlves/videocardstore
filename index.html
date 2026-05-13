@@ -18,11 +18,6 @@
         </div>
       </div>
 
-      <select id="languageSwitcher">
-        <option value="ru">RU</option>
-        <option value="en">EN</option>
-      </select>
-
       <nav class="nav-collapse">
         <a href="#catalog" data-i18n="catalog">Каталог</a>
         <a href="#deals" data-i18n="deals">Акции</a>
@@ -38,11 +33,38 @@
         </div>
 
         <div class="actions">
-          <button class="icon-btn" title="Избранное">♡</button>
-          <button class="icon-btn" title="Профиль">👤</button>
-          <button class="btn" id="cartBtn">Корзина <span id="cartCount" class="cart-badge">0</span></button>
+
+          <select id="languageSwitcher">
+            <option value="ru">RU</option>
+            <option value="en">EN</option>
+          </select>
+
+          <button class="icon-btn" title="Избранное">
+            ♡
+          </button>
+
+          <button class="icon-btn" title="Профиль">
+            👤
+          </button>
+
+          <button class="btn" id="cartBtn">
+            Корзина
+          <span id="cartCount" class="cart-badge">
+            0
+          </span>
+          </button>
+
         </div>
-      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Главная акция">
+      <div>
+        <div class="kicker">Спецпредложение</div>
+        <h1 data-i18n="heroTitle">Освежи сборку — скидки до 15%</h1>
+        <p>У нас только проверенные поставщики и официальная гарантия. Подбери видеокарту по бюджету и задачам — игры, рендер или майнинг.</p>
+        <div class="cta">
+          <a class="btn" href="#catalog">Перейти в каталог</a>
     </header>
 
     <!-- HERO -->

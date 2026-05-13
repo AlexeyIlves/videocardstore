@@ -22,7 +22,11 @@ const translations = {
       "В наличии",
 
     outOfStock:
-      "Нет в наличии"
+      "Нет в наличии",
+
+    deals: "Акции",
+    about: "О нас",
+    contacts: "Контакты"  
   },
 
   en: {
@@ -47,6 +51,10 @@ const translations = {
       "In stock",
 
     outOfStock:
-      "Out of stock"
+      "Out of stock",
+
+    deals: "Deals",
+    about: "About us",
+    contacts: "Contacts"  
   }
 };

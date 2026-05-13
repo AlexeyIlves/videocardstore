@@ -146,6 +146,11 @@ nav a:hover{
   cursor:pointer;
 }
 
+.lang-switcher{
+  width:auto;
+  min-width:70px;
+}
+
 /* =========================
    SEARCH
 ========================= */
