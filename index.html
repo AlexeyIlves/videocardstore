@@ -18,11 +18,16 @@
         </div>
       </div>
 
+      <select id="languageSwitcher">
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+      </select>
+
       <nav class="nav-collapse">
-        <a href="#catalog">Каталог</a>
-        <a href="#deals">Акции</a>
-        <a href="#about">О нас</a>
-        <a href="#contacts">Контакты</a>
+        <a href="#catalog" data-i18n="catalog">Каталог</a>
+        <a href="#deals" data-i18n="deals">Акции</a>
+        <a href="#about" data-i18n="about">О нас</a>
+        <a href="#contacts" data-i18n="contacts">Контакты</a>
       </nav>
 
       <div style="display:flex;align-items:center;gap:10px;flex:1;margin-left:20px">
@@ -44,7 +49,7 @@
     <section class="hero" aria-label="Главная акция">
       <div>
         <div class="kicker">Спецпредложение</div>
-        <h1>Освежи сборку — скидки до 15% на избранные модели</h1>
+        <h1 data-i18n="heroTitle">Освежи сборку — скидки до 15%</h1>
         <p>У нас только проверенные поставщики и официальная гарантия. Подбери видеокарту по бюджету и задачам — игры, рендер или майнинг.</p>
         <div class="cta">
           <a class="btn" href="#catalog">Перейти в каталог</a>
@@ -158,5 +163,7 @@
   </div>
   <script src="js/products.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/i18n.js"></script>
 </body>
 </html>
