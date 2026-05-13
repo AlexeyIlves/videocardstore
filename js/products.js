@@ -31,7 +31,7 @@ const PRODUCTS = [
     boostClock:"2505 MHz",
     power:"320W",
     images:[
-      "images/rtx4090-1.jpeg",
+      "images/rtx4080-1.jpeg",
       "images/rtx4080-2.png",
       "images/rtx4080-3.png"
     ]
