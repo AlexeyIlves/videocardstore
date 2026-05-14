@@ -12,9 +12,9 @@ const itemsTotal =
     'itemsTotal'
   );
 
-  const submitOrderBtn =
-    document.getElementById(
-        'submitOrderBtn'
+const submitOrderBtn =
+  document.getElementById(
+    'submitOrderBtn'
   );
 
 const finalTotal =
@@ -33,8 +33,8 @@ const checkoutForm =
 
 function formatPrice(price){
 
-  return new Intl.NumberFormat('ru-RU')
-    .format(price) + ' ₽';
+  return '$' + new Intl.NumberFormat('en-US')
+    .format(price);
 }
 
 // =========================
@@ -64,10 +64,10 @@ function renderOrder(){
   if(cart.length === 0){
 
     submitOrderBtn.disabled = true;
-    
+
     checkoutItems.innerHTML = `
       <div class="muted">
-        Корзина пуста
+        Your cart is empty
       </div>
     `;
 
@@ -108,7 +108,7 @@ function renderOrder(){
         </div>
 
         <div class="muted">
-          ${item.quantity} шт.
+          Quantity: ${item.quantity}
         </div>
 
       </div>
@@ -147,14 +147,14 @@ if(checkoutForm){
 
       if(cart.length === 0){
 
-        alert('Корзина пуста');
+        alert('Your cart is empty');
 
         return;
       }
 
       localStorage.removeItem('cart');
 
-     document.body.innerHTML = `
+      document.body.innerHTML = `
   <div class="container">
 
     <div class="card"
@@ -166,11 +166,11 @@ if(checkoutForm){
     >
 
       <h1>
-        Заказ оформлен 🎉
+        Order Confirmed 🎉
       </h1>
 
       <p class="muted">
-        Спасибо за покупку в GPU Store
+        Thank you for shopping at GPU Store
       </p>
 
       <a
@@ -178,7 +178,7 @@ if(checkoutForm){
         class="btn btn-primary"
         style="margin-top:20px"
       >
-        Вернуться на главную
+        Return to Home Page
       </a>
 
     </div>

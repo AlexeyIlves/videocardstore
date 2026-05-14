@@ -17,8 +17,8 @@ const searchInput =
 
 function formatPrice(price){
 
-  return new Intl.NumberFormat('ru-RU')
-    .format(price) + ' ₽';
+  return '$' + new Intl.NumberFormat('en-US')
+    .format(price);
 }
 
 // =========================
@@ -77,7 +77,7 @@ function addToCart(id){
 
   updateCartCount();
 
-  showToast('Товар добавлен в корзину');
+  showToast('Product added to cart');
 }
 
 // =========================
@@ -122,10 +122,10 @@ function renderProducts(products){
 
     productsGrid.innerHTML = `
       <div class="card">
-        <h2>Ничего не найдено</h2>
+        <h2>No products found</h2>
 
         <p class="muted">
-          Попробуйте изменить запрос
+          Try changing your search query
         </p>
       </div>
     `;
@@ -172,8 +172,8 @@ function renderProducts(products){
         ">
           ${
             product.inStock
-            ? 'В наличии'
-            : 'Нет в наличии'
+            ? 'In Stock'
+            : 'Out of Stock'
           }
         </div>
 
@@ -195,7 +195,7 @@ function renderProducts(products){
             class="btn btn-primary"
             onclick="addToCart(${product.id})"
           >
-            В корзину
+            Add to Cart
           </button>
           `
           :
@@ -204,7 +204,7 @@ function renderProducts(products){
             class="btn btn-secondary"
             disabled
           >
-            Нет в наличии
+            Out of Stock
           </button>
           `
         }
@@ -213,7 +213,7 @@ function renderProducts(products){
           class="btn btn-secondary"
           onclick="viewDetails(${product.id})"
         >
-          Подробнее
+          Details
         </button>
 
       </div>
@@ -282,13 +282,13 @@ function subscribe(){
 
   if(!email){
 
-    showToast('Введите email');
+    showToast('Please enter your email');
 
     return;
   }
 
   showToast(
-    `Подписка оформлена: ${email}`
+    `Subscribed successfully: ${email}`
   );
 
   input.value = '';

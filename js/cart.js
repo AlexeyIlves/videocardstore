@@ -10,7 +10,7 @@ const cartTotal = document.getElementById('cartTotal');
 // =========================
 
 function formatPrice(price){
-  return new Intl.NumberFormat('ru-RU').format(price) + ' ₽';
+  return '$' + new Intl.NumberFormat('en-US').format(price);
 }
 
 // =========================
@@ -42,14 +42,15 @@ function renderCart(){
 
     cartList.innerHTML = `
       <div class="card">
-        <h2>Корзина пуста</h2>
+        <h2>Your cart is empty</h2>
+
         <p class="muted">
-          Добавьте товары из каталога
+          Add products from the catalog
         </p>
       </div>
     `;
 
-    cartTotal.textContent = 'Итого: 0 ₽';
+    cartTotal.textContent = 'Total: $0';
 
     return;
   }
@@ -118,7 +119,7 @@ function renderCart(){
         class="btn btn-secondary"
         onclick="removeItem(${index})"
       >
-        Удалить
+        Remove
       </button>
     `;
 
@@ -126,7 +127,7 @@ function renderCart(){
   });
 
   cartTotal.textContent =
-    'Итого: ' + formatPrice(total);
+    'Total: ' + formatPrice(total);
 }
 
 // =========================
@@ -183,12 +184,12 @@ function checkout(){
 
   if(cart.length === 0){
 
-    alert('Корзина пуста');
+    alert('Your cart is empty');
 
     return;
   }
 
-  alert('Заказ успешно оформлен!');
+  alert('Order placed successfully!');
 
   localStorage.removeItem('cart');
 

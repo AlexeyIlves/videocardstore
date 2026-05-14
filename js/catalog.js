@@ -26,8 +26,8 @@ const cartCount =
 
 function formatPrice(price){
 
-  return new Intl.NumberFormat('ru-RU')
-    .format(price) + ' ₽';
+  return '$' + new Intl.NumberFormat('en-US')
+    .format(price);
 }
 
 // =========================
@@ -88,7 +88,7 @@ function addToCart(id){
 
   updateCartCount();
 
-  showToast('Товар добавлен');
+  showToast('Product added to cart');
 }
 
 // =========================
@@ -136,11 +136,11 @@ function renderProducts(products){
       <div class="card">
 
         <h2>
-          Товары не найдены
+          No products found
         </h2>
 
         <p class="muted">
-          Попробуйте изменить фильтры
+          Try changing the filters
         </p>
 
       </div>
@@ -190,8 +190,8 @@ function renderProducts(products){
 
           ${
             product.inStock
-            ? 'В наличии'
-            : 'Нет в наличии'
+            ? 'In Stock'
+            : 'Out of Stock'
           }
 
         </div>
@@ -214,7 +214,7 @@ function renderProducts(products){
             class="btn btn-primary"
             onclick="addToCart(${product.id})"
           >
-            В корзину
+            Add to Cart
           </button>
           `
           :
@@ -223,7 +223,7 @@ function renderProducts(products){
             class="btn btn-secondary"
             disabled
           >
-            Нет в наличии
+            Out of Stock
           </button>
           `
         }
@@ -232,7 +232,7 @@ function renderProducts(products){
           class="btn btn-secondary"
           onclick="viewProduct(${product.id})"
         >
-          Подробнее
+          Details
         </button>
 
       </div>

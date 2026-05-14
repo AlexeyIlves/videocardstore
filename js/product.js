@@ -38,8 +38,9 @@ let currentImage =
 // =========================
 
 function formatPrice(price){
-  return new Intl.NumberFormat('ru-RU')
-    .format(price) + ' ₽';
+
+  return '$' + new Intl.NumberFormat('en-US')
+    .format(price);
 }
 
 function updateCartCount(){
@@ -100,7 +101,7 @@ function addToCart(){
 
   updateCartCount();
 
-  showToast('Товар добавлен в корзину');
+  showToast('Product added to cart');
 }
 
 // =========================
@@ -143,11 +144,15 @@ function renderProduct(){
 
     container.innerHTML = `
       <div class="card">
-        <h1>Товар не найден</h1>
+
+        <h1>
+          Product Not Found
+        </h1>
 
         <p class="muted">
-          Возможно ссылка устарела
+          The link may be outdated
         </p>
+
       </div>
     `;
 
@@ -161,35 +166,35 @@ function renderProduct(){
 
         <div class="product-image">
 
-            <img
+          <img
             src="${currentImage}"
             alt="${product.title}"
-            >
+          >
 
         </div>
 
         <div class="gallery-thumbs">
 
-            ${product.images.map(image => `
+          ${product.images.map(image => `
             <button
-                class="
+              class="
                 gallery-thumb
                 ${currentImage === image ? 'active' : ''}
-                "
-                onclick="changeImage('${image}')"
+              "
+              onclick="changeImage('${image}')"
             >
 
-                <img
+              <img
                 src="${image}"
                 alt="${product.title}"
-                >
+              >
 
             </button>
-            `).join('')}
+          `).join('')}
 
         </div>
 
-    </div>
+      </div>
 
       <div class="product-info">
 
@@ -207,16 +212,16 @@ function renderProduct(){
 
         <div class="spec-table">
 
-          <div>Бренд</div>
+          <div>Brand</div>
           <div>${product.brand}</div>
 
-          <div>Память</div>
+          <div>Memory</div>
           <div>${product.memory}</div>
 
           <div>Boost Clock</div>
           <div>${product.boostClock}</div>
 
-          <div>Потребление</div>
+          <div>Power Consumption</div>
           <div>${product.power}</div>
 
         </div>
@@ -233,8 +238,8 @@ function renderProduct(){
         ">
           ${
             product.inStock
-            ? 'В наличии'
-            : 'Нет в наличии'
+            ? 'In Stock'
+            : 'Out of Stock'
           }
         </div>
 
@@ -248,13 +253,13 @@ function renderProduct(){
               class="btn btn-primary"
               onclick="addToCart()"
             >
-              Добавить в корзину
+              Add to Cart
             </button>
             `
             :
             `
             <button class="btn btn-secondary">
-              Сообщить о поступлении
+              Notify Me
             </button>
             `
           }
